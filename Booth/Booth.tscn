@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Booth/Booth.gd" type="Script" id=1]
+[ext_resource path="res://Assets/spritesheet_stall.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Merry_Go_Slower.wav" type="AudioStream" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 70, 7, -70, -7, 154, 557, -6.14487, 73.7904, 6.14487, -73.7904, 154, 401, -165.307, 2.9353, 165.307, -2.9353, 351, 292, -127.307, -4.11252, 127.307, 4.11252, 643, 299, -15.9353, -72.0647, 15.9353, 72.0647, 828, 411, 67, 0, -67, 0, 830, 560, 0, 0, 0, 0, 154, 557 )
+}
+
+[node name="Booth" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Path2D2" type="Path2D" parent="."]
+position = Vector2( 50.9845, -96.6948 )
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
+position = Vector2( 154.133, 399.552 )
+rotation = -1.47972
+offset = 181.936
+
+[node name="Cover" type="Node2D" parent="."]
+position = Vector2( 1.75806, -84.3882 )
+
+[node name="Wood1" type="Sprite" parent="Cover"]
+position = Vector2( 186.357, 530.942 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 258, 0, 256, 256 )
+
+[node name="Wood2" type="Sprite" parent="Cover"]
+position = Vector2( 425.457, 543.249 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 258, 0, 256, 256 )
+
+[node name="Wood3" type="Sprite" parent="Cover"]
+position = Vector2( 618.847, 516.878 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 258, 0, 256, 256 )
+
+[node name="Wood4" type="Sprite" parent="Cover"]
+position = Vector2( 857.947, 537.975 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 258, 0, 256, 256 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
