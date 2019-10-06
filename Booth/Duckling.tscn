@@ -5,7 +5,7 @@
 [ext_resource path="res://Assets/Booth/stick_wood_outline.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 60.3377
+radius = 51.612
 
 [sub_resource type="Animation" id=2]
 resource_name = "fall_off"
@@ -151,7 +151,9 @@ tracks/4/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[node name="Duckling" type="KinematicBody2D"]
+[node name="Duckling" type="KinematicBody2D" groups=[
+"target",
+]]
 script = ExtResource( 1 )
 speed = 220
 despawn_time = 6

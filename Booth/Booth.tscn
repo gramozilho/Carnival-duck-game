@@ -19,7 +19,7 @@ _data = {
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 192.777, 519.799, -30.0081, 2.57213, 30.0081, -2.57213, 223.47, 291.44, -36.8671, 1.71475, 36.8671, -1.71475, 260.302, 518.571, -36.8671, 2.57213, 36.8671, -2.57213, 321.689, 292.667, -38.5819, 4.28688, 38.5819, -4.28688, 365.888, 517.343, -37.7245, 0.857375, 37.7245, -0.857375, 432.186, 285.301, -48.013, 2.57213, 48.013, -2.57213, 494.8, 514.888, -37.7245, 5.14425, 37.7245, -5.14425, 545.138, 287.756, -48.8704, 15.4328, 48.8704, -15.4328, 607.752, 523.482, -46.2983, 2.57213, 46.2983, -2.57213, 670.367, 286.529, -51.4425, 6.859, 51.4425, -6.859, 724.387, 513.66, -39.4393, 1.71475, 39.4393, -1.71475, 785.774, 284.073, 0, 0, 0, 0, 842.25, 517.343, 0, 0, 0, 0, 850.844, 680.633, 0, 0, 0, 0, 189.094, 676.949, 0, 0, 0, 0, 192.777, 519.799 )
+"points": PoolVector2Array( 0, 0, 0, 0, 192.777, 519.799, -30.0081, 2.57213, 30.0081, -2.57213, 223.47, 291.44, -36.8671, 2.57213, 36.8671, -2.57213, 321.689, 292.667, -38.5819, 4.28688, 38.5819, -4.28688, 365.888, 517.343, -37.7245, 0.857375, 37.7245, -0.857375, 432.186, 285.301, -37.7245, 5.14425, 37.7245, -5.14425, 545.138, 287.756, -48.8704, 15.4328, 48.8704, -15.4328, 607.752, 523.482, -46.2983, 2.57213, 46.2983, -2.57213, 670.367, 286.529, -39.4393, 1.71475, 39.4393, -1.71475, 785.774, 284.073, 0, 0, 0, 0, 842.25, 517.343, 0, 0, 0, 0, 850.844, 680.633, 0, 0, 0, 0, 189.094, 676.949, 0, 0, 0, 0, 192.777, 519.799 )
 }
 
 [sub_resource type="NoiseTexture" id=3]
@@ -29,7 +29,7 @@ script = ExtResource( 1 )
 
 [node name="Path2D2" type="Path2D" parent="."]
 editor/display_folded = true
-position = Vector2( 61.3232, 1.52422 )
+position = Vector2( 60.0308, -24.3229 )
 curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
@@ -186,8 +186,13 @@ margin_bottom = 131.086
 
 [node name="PathTarget" type="Path2D" parent="."]
 curve = SubResource( 2 )
+
+[node name="ShotTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="animation_started" from="HUD" to="." method="_on_HUD_animation_started"]
 [connection signal="gameover" from="HUD" to="." method="_on_HUD_gameover"]
 [connection signal="start_game" from="HUD" to="." method="_on_HUD_start_game"]
 [connection signal="time_up" from="ClockPosition/Clock" to="." method="_on_Clock_time_up"]
+[connection signal="timeout" from="ShotTimer" to="." method="_on_ShotTimer_timeout"]

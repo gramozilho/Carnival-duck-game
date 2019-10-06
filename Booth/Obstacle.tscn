@@ -8,7 +8,7 @@
 radius = 62.2961
 height = 76.0461
 
-[node name="Obstacle" index="0" instance=ExtResource( 1 )]
+[node name="Obstacle" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 speed = 200
 

@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal score_update
+signal got_hit
 
 export (int) var speed = 50
 export (int) var despawn_time = 5
@@ -11,6 +12,7 @@ onready var parent = get_parent()
 var alive = true
 var velocity = Vector2()
 var target_in_place = false
+var type = 'target'
 
 func _ready():
 	$Area2D/CollisionArea.shape = $CollisionShape2D.shape
@@ -38,7 +40,9 @@ func shot_down():
 func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton and alive:
 		if event.is_pressed():
-			shot_down()
+			emit_signal("got_hit", self) #, [get_instance_id()])
+			#print('signal that got hit sent: ', get_instance_id())
+			#shot_down()
 
 
 func _on_Timer_timeout():
