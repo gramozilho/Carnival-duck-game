@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Booth/Duckling.gd" type="Script" id=1]
 [ext_resource path="res://Assets/spritesheet_objects.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Booth/stick_wood_outline.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 60.3377
@@ -73,6 +74,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [ 0.0, 0.0 ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Support:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.15, 0.35, 0.6, 0.9, 1.25, 2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0.8 ), Vector2( 1e-005, 0.8 ), Vector2( 1, 0.8 ), Vector2( 1e-005, 0.8 ), Vector2( 1, 0.8 ), Vector2( 1e-005, 0.8 ), Vector2( 1, 0.8 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "starting_state"
@@ -140,12 +153,18 @@ tracks/4/keys = {
 
 [node name="Duckling" type="KinematicBody2D"]
 script = ExtResource( 1 )
-speed = 100
+speed = 220
+despawn_time = 6
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 418, 321, 114, 109 )
+
+[node name="Support" type="Sprite" parent="."]
+position = Vector2( 0, 100 )
+scale = Vector2( 1, 0.8 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -162,8 +181,14 @@ anims/starting_state = SubResource( 4 )
 
 [node name="Back" type="Sprite" parent="."]
 visible = false
+scale = Vector2( 0.600004, 1 )
 texture = ExtResource( 2 )
 flip_h = true
 region_enabled = true
 region_rect = Rect2( 404, 581, 114, 109 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
 [connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
