@@ -1,0 +1,108 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Gun.gd" type="Script" id=1]
+[ext_resource path="res://Assets/spritesheet_objects.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Booth/icon_bullet_empty_long.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Booth/icon_bullet_silver_long.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Music/No_bullets.wav" type="AudioStream" id=5]
+
+[sub_resource type="Animation" id=2]
+resource_name = "no_bullets"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Bullets:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.717647, 0.184314, 0.184314, 1 ), Color( 0.0941176, 0.0666667, 0.0666667, 1 ), Color( 0.772549, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "shoot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Gun:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 10.0, 0.0 ]
+}
+
+[node name="Gun" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="Gun" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 144, 0, 142, 319 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/no_bullets = SubResource( 2 )
+anims/shoot = SubResource( 1 )
+
+[node name="Bullets" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+margin_left = -163.572
+margin_top = 16.6458
+margin_right = -17.5717
+margin_bottom = 64.6458
+
+[node name="Bullet1" type="TextureProgress" parent="Bullets"]
+margin_right = 21.0
+margin_bottom = 48.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+fill_mode = 3
+
+[node name="Bullet2" type="TextureProgress" parent="Bullets"]
+margin_left = 25.0
+margin_right = 46.0
+margin_bottom = 48.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+fill_mode = 3
+
+[node name="Bullet3" type="TextureProgress" parent="Bullets"]
+margin_left = 50.0
+margin_right = 71.0
+margin_bottom = 48.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+fill_mode = 3
+
+[node name="Bullet4" type="TextureProgress" parent="Bullets"]
+margin_left = 75.0
+margin_right = 96.0
+margin_bottom = 48.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+fill_mode = 3
+
+[node name="Bullet5" type="TextureProgress" parent="Bullets"]
+margin_left = 100.0
+margin_right = 121.0
+margin_bottom = 48.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+fill_mode = 3
+
+[node name="Bullet6" type="TextureProgress" parent="Bullets"]
+margin_left = 125.0
+margin_right = 146.0
+margin_bottom = 48.0
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+fill_mode = 3
+
+[node name="NoBullets" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )

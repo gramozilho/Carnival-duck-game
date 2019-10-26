@@ -5,8 +5,8 @@
 [ext_resource path="res://Assets/spritesheet_stall.png" type="Texture" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 62.2961
-height = 76.0461
+radius = 40.0
+height = 130.0
 
 [node name="Obstacle" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -14,7 +14,7 @@ speed = 200
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
-region_rect = Rect2( 258, 516, 143, 244 )
+region_rect = Rect2( 673, 428, 119, 255 )
 
 [node name="CollisionArea" parent="Area2D" index="0"]
 shape = SubResource( 1 )

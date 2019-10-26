@@ -18,3 +18,13 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.is_pressed():
 			emit_signal("got_hit", self) #, [get_instance_id()])
+
+func make_tree():
+	$Sprite.region_rect = Rect2(258, 516, 143, 244)
+	$Area2D/CollisionArea.shape.radius = 63
+	$Area2D/CollisionArea.shape.height = 76
+
+func make_pine():
+	$Sprite.region_rect = Rect2(673, 428, 119, 244)
+	$Area2D/CollisionArea.shape.radius = 40
+	$Area2D/CollisionArea.shape.height = 130

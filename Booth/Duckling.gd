@@ -7,6 +7,7 @@ export (int) var speed = 50
 export (int) var despawn_time = 5
 export (int) var score = 1
 
+
 onready var parent = get_parent()
 
 var alive = true
@@ -44,10 +45,8 @@ func _on_Area2D_input_event(viewport, event, shape_idx):
 			#print('signal that got hit sent: ', get_instance_id())
 			#shot_down()
 
-
 func _on_Timer_timeout():
-	queue_free()
-
+	self.queue_free()
 
 func no_more_shooting():
 	alive = false

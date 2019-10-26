@@ -3,17 +3,17 @@
 [ext_resource path="res://HUD.gd" type="Script" id=1]
 [ext_resource path="res://ScoreFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Assets/Kenney Blocks.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://Assets/target_colored_outline.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Booth/target_colored_outline.png" type="Texture" id=4]
 [ext_resource path="res://Assets/spritesheet_hud.png" type="Texture" id=5]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 25
 font_data = ExtResource( 3 )
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
 radius = 69.8049
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "GameOver"
 length = 2.0
 tracks/0/type = "value"
@@ -29,8 +29,7 @@ tracks/0/keys = {
 "values": [ true, true, false ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "StartGameImages"
+[sub_resource type="Animation" id=4]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("AnimationPlayer/Sprite:visible")
@@ -73,7 +72,7 @@ margin_left = 100.674
 margin_top = 214.854
 margin_right = 453.674
 margin_bottom = 253.854
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Shoot target to start"
 
 [node name="Target" type="Area2D" parent="."]
@@ -84,11 +83,11 @@ texture = ExtResource( 4 )
 
 [node name="Collision" type="CollisionShape2D" parent="Target"]
 position = Vector2( 266.435, 132.312 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/GameOver = SubResource( 4 )
-anims/StartGameImages = SubResource( 3 )
+anims/GameOver = SubResource( 3 )
+anims/StartGameImages = SubResource( 4 )
 
 [node name="Sprite" type="Sprite" parent="AnimationPlayer"]
 visible = false
@@ -110,6 +109,6 @@ visible = false
 position = Vector2( 509.695, 197.23 )
 texture = ExtResource( 5 )
 region_enabled = true
-region_rect = Rect2( 0, 0, 350, 70 )
+region_rect = Rect2( 0, 74, 295, 70 )
 [connection signal="input_event" from="Target" to="." method="_on_Target_input_event"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
